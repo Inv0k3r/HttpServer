@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            game
+        </title>
+        <link rel="shortcut icon" href="/images/favicon.ico" >
+        <link rel="stylesheet" href="/css/game.css" type="text/css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js">
+        </script>
+        <script type="text/javascript">
+            function next(x, y) {
+                $.ajax({
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/next" ,//url
+                    data: "x=" + x + '&y=' + y,
+                    success: function (result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        console.log(result['message']);
+                        if(result['message'] != undefined){
+                            alert(result['message']);
+                        }else{       
+                            //解析json并显示出来
+                            //[{0,0,0}, {0,0,0}, {0,0,0}]
+                            //0: 空白位置
+                            //1: 我方位置
+                            //2: 对方位置
+                            for (var i = 0; i < 3; i ++){
+                                for (var j in result[i]){
+                                    if (result[i][j] == '1'){
+                                        var a = document.getElementById(j).style.backgroundColor = "red";
+                                    }else if(result[i][j] == '2'){
+                                        var a = document.getElementById(j).style.backgroundColor = "green";
+                                    }else{
+                                        var a = document.getElementById(j).style.backgroundColor = "white";
+                                    }
+                                }
+                            }
+                        }
+
+                    },
+                    error : function() {
+                        alert("服务器异常！");
+                    }
+                });
+            }
+            function refresh() {
+                $.ajax({
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/refresh" ,//url
+                    success: function (result) {
+                        if(result['message'] != undefined){
+                            alert(result['message']);
+                            if((result['message'] == 'You Win!') || 
+                            (result['message'] == 'You Lose...') || 
+                            (result['message'] == 'Ends in a draw')){
+                                clearInterval()
+                                window.location.href="index.html";
+                            }
+                        }else{       
+                            //解析json并显示出来
+                            //[{0,0,0}, {0,0,0}, {0,0,0}]
+                            //0: 空白位置
+                            //1: 我方位置
+                            //2: 对方位置
+                            for (var i = 0; i < 3; i ++){
+                                for (var j in result[i]){
+                                    if (result[i][j] == '1'){
+                                        var a = document.getElementById(j).style.backgroundColor = "red";
+                                    }else if(result[i][j] == '2'){
+                                        var a = document.getElementById(j).style.backgroundColor = "green";
+                                    }else{
+                                        var a = document.getElementById(j).style.backgroundColor = "white";
+                                    }
+                                }
+                            }
+                        }
+
+                    },
+                    error : function() {
+                        alert("服务器异常！");
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <h1 style="text-align: center">井字棋小游戏</h1>
+        <div>
+            <table>
+                <tr>
+                    <td id='00' onclick="next('0', '0')">
+                    </td>
+                    <td id='01' onclick="next('0', '1')">
+                    </td>
+                    <td id='02' onclick="next('0', '2')">
+                    </td>
+                </tr>
+                <tr>
+                    <td id='10' onclick="next('1', '0')">
+                    </td>
+                    <td id='11' onclick="next('1', '1')">
+                    </td>
+                    <td id='12' onclick="next('1', '2')">
+                    </td>
+                </tr>
+                <tr>
+                    <td id='20' onclick="next('2', '0')">
+                    </td>
+                    <td id='21' onclick="next('2', '1')">
+                    </td>
+                    <td id='22' onclick="next('2', '2')">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    <script>
+        var timer = setInterval("refresh()","1000");
+    </script>
+</html>

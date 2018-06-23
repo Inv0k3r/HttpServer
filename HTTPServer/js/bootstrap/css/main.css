@@ -1,0 +1,154 @@
+.img-fix {
+    width: 100%;
+    object-fit: cover;
+    vertical-align: center;
+}
+.nav-self {
+    font-size: 20px;
+    height: 70px;
+}
+.nav-tab{
+    height: 70px;
+}
+.bg{
+    background: url("../../images/background.jpg") no-repeat center fixed;
+    background-size: 100%;
+}
+.leftdiv{
+    height: 100%;
+    width: 68%;
+    float: left;
+}
+.rightdiv{
+    height: 100%;
+    width: 30%;
+    float: right;
+}
+.main{
+    margin: 60px auto;
+    width: 1500px;
+    /*position: absolute;*/
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*display: block;*/
+    padding: 40px 30px 30px 30px;
+
+}
+.login > a,
+.login > a:hover,
+.login > a:focus{
+    transform: skewX(-25deg);
+    width: 140px;
+    height: 70px;
+    text-align: center;
+    font-size: 25px;
+    background-color: #134857;
+    color: #ffffff;
+    float: right;
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.topic{
+    margin-top: 15px;
+    background-color: #ffffff;
+    height: auto;
+
+    bottom: 10px;
+}
+.title{
+    font-size: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    /*border-bottom: solid 1px;*/
+    position: relative;
+    width: 90%;
+    color: #777;
+}
+.topic .items{
+    padding: 20px;
+
+    height: 600px;
+}
+.topic .items .item{
+    width: 50%;
+    float: left;
+}
+.topic .items .item .title{
+    top: 5px;
+}
+.topic .items .item .imgs{
+    padding: 15px;
+}
+.topic .items .item .imgs .img{
+    width: 100px;
+    padding-left: 20px;
+}
+.topic .items .item .context{
+    font-size: 15px;
+    padding-left: 35px;
+    padding-right: 140px;
+}
+.border-bottom {
+    padding: 15px;
+}
+.border-bottom:after {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: auto;
+    bottom: 0;
+    right: auto;
+    height: 1px;
+    width: 300px;
+    background-color: #b0b0b0;
+}
+.border-bottom:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 30%;
+    bottom: auto;
+    right: auto;
+    height: 52%;
+    width: 10px;
+    background-color: #134857;
+}
+.tags{
+    background-color: #ffffff;
+    box-shadow: 0 0 15px #134857;
+    height: auto;
+}
+.tagplane{
+    padding: 15px;
+}
+
+.tag{
+    margin: 10px;
+    font-size: 20px;
+    background-color: #bebebe;
+    color: #134857;
+    border-radius: 5px;
+    padding: 5px 15px 5px 15px;
+    display: inline-table;
+}
+.tag:hover{
+    background-color: #134857;
+    color: #ffffff;
+}
+.recent{
+    box-shadow: 0 0 15px #134857;
+    margin-top: 15px;
+    background-color: #ffffff;
+    height: auto;
+}
+.activity{
+    max-width: 800px;
+    height: auto;
+    padding: 10px 30px 10px 30px;
+}
